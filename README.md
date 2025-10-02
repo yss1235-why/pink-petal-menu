@@ -1,73 +1,175 @@
-# Welcome to your Lovable project
+# Yours Café - Premium Restaurant Menu Web App
 
-## Project info
+A mobile-first, animation-heavy restaurant menu application built with React, Vite, Framer Motion, and Tailwind CSS.
 
-**URL**: https://lovable.dev/projects/71bf1711-bc64-49d2-a3c2-532eb8e88bf8
+## Features
 
-## How can I edit this code?
+- **Premium Design**: Pink gradient theme with glassmorphism effects
+- **Heavy Animations**: Powered by Framer Motion with spring physics
+- **Random Greeting**: 62 unique elegant greetings with typing animation
+- **Category Navigation**: Swipeable category tray with 3D tilt effects
+- **Menu Items**: Staggered animations with touch zoom and glass blur overlays
+- **Detail View**: Bottom sheet modal with spring physics and parallax header
+- **Order Management**: Add items with flying thumbnail animation
+- **Show to Waiter**: Fullscreen view optimized for presenting to staff
+- **Accessibility**: Respects `prefers-reduced-motion`, keyboard navigation, and ARIA labels
+- **Performance**: Optimized animations using transforms and opacity only
+- **PWA Ready**: Can be installed as a progressive web app
 
-There are several ways of editing your application.
+## Design System
 
-**Use Lovable**
+### Color Palette
+- Primary: Rose/Pink gradient (HSL 330-340)
+- Glass effects with backdrop blur
+- Soft pink-tinted shadows
+- Semantic color tokens in `src/index.css`
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/71bf1711-bc64-49d2-a3c2-532eb8e88bf8) and start prompting.
+### Typography
+- **Script**: Dancing Script (greetings)
+- **Serif**: Playfair Display (headers)
+- **Sans**: Inter (UI elements)
 
-Changes made via Lovable will be committed automatically to this repo.
+### Animation Tokens
+- `--transition-smooth`: All smooth transitions
+- `--spring`: Spring curve for physics-based animations
+- `--shadow-elegant`, `--shadow-glow`: Premium shadow effects
 
-**Use your preferred IDE**
+## Getting Started
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Prerequisites
+- Node.js 16+ and npm
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Installation
 
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
+```bash
+# Clone the repository
 git clone <YOUR_GIT_URL>
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Navigate to project directory
+cd yours-cafe
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Install dependencies
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The app will be available at `http://localhost:8080`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Build for Production
 
-**Use GitHub Codespaces**
+```bash
+npm run build
+npm run preview
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Project Structure
 
-## What technologies are used for this project?
+```
+src/
+├── components/
+│   ├── LoadingScreen.tsx       # Animated loading with logo reveal
+│   ├── Navbar.tsx              # Sticky nav with order badge
+│   ├── GreetingBanner.tsx      # Random greeting with typing effect
+│   ├── CategoryScroller.tsx    # Horizontal swipeable categories
+│   ├── MenuItemCard.tsx        # Individual menu item with animations
+│   ├── MenuList.tsx            # Grid of menu items
+│   ├── DetailBottomSheet.tsx   # Modal detail view
+│   ├── OrderPanel.tsx          # Side panel for order management
+│   └── ShowToWaiter.tsx        # Fullscreen waiter view
+├── data/
+│   ├── greetings.ts            # 62 elegant greeting strings
+│   └── menuData.ts             # All menu items
+├── pages/
+│   └── Index.tsx               # Main app orchestration
+└── index.css                   # Design system tokens
+```
 
-This project is built with:
+## Customization
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### Adding Menu Items
 
-## How can I deploy this project?
+Edit `src/data/menuData.ts`:
 
-Simply open [Lovable](https://lovable.dev/projects/71bf1711-bc64-49d2-a3c2-532eb8e88bf8) and click on Share -> Publish.
+```typescript
+{
+  id: 'unique-id',
+  name: 'Item Name',
+  category: 'Category',
+  price: 100,
+  description: 'Item description',
+  ingredients: ['Ingredient 1', 'Ingredient 2'],
+  prepTime: '5-6 mins',
+  spiceLevel: 0, // 0-3
+  rating: 4.5,
+  image: '/images/menu/item.webp'
+}
+```
 
-## Can I connect a custom domain to my Lovable project?
+### Customizing Colors
 
-Yes, you can!
+Edit `src/index.css` design tokens:
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+```css
+:root {
+  --primary: 330 81% 60%;        /* Main brand color */
+  --accent: 340 85% 65%;         /* Accent highlights */
+  --gradient-primary: ...;       /* Primary gradient */
+}
+```
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+### Tuning Animations
+
+Adjust in `tailwind.config.ts`:
+
+```typescript
+animation: {
+  'fade-in': 'fadeIn 0.5s ease-out',  // Adjust duration
+  'slide-up': 'slideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)',
+}
+```
+
+Or disable animations for reduced motion in `src/index.css`.
+
+## Performance Tips
+
+1. **Image Optimization**: All images are WebP format. Keep them under 200KB.
+2. **Lazy Loading**: Images use native `loading="lazy"` attribute.
+3. **Transform/Opacity**: Animations only use CSS transforms and opacity for 60fps.
+4. **Code Splitting**: Components are automatically code-split by Vite.
+
+## Accessibility
+
+- ✅ 44px minimum touch targets
+- ✅ Keyboard navigation for all interactive elements
+- ✅ ARIA labels on buttons and controls
+- ✅ `prefers-reduced-motion` support
+- ✅ Semantic HTML structure
+- ✅ High contrast ratios
+
+## Technologies
+
+- **React 18** - UI framework
+- **Vite** - Build tool
+- **TypeScript** - Type safety
+- **Tailwind CSS** - Utility-first styling
+- **Framer Motion** - Animation orchestration
+- **Lottie React** - Complex micro-animations
+- **Lucide React** - Icon library
+- **shadcn/ui** - Component primitives
+
+## Browser Support
+
+- Chrome/Edge 90+
+- Safari 14+
+- Firefox 88+
+- Mobile browsers (iOS Safari, Chrome Mobile)
+
+## License
+
+MIT
+
+## Credits
+
+Built with ❤️ using Lovable
