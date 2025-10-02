@@ -23,7 +23,7 @@ const Navbar = ({ orderCount, onOrderClick }: NavbarProps) => {
             whileTap={{ scale: 0.95 }}
           >
            <img 
-          src="public/images/yours-cafe-logo.png" 
+          src="public/yours-cafe-logo.png" 
           alt="Yours Café Logo" 
           className="w-6 h-6 object-contain"
           />
