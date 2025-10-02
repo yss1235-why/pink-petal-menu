@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Coffee, ShoppingBag } from 'lucide-react';
+import { ShoppingBag } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
 interface NavbarProps {
@@ -22,7 +22,11 @@ const Navbar = ({ orderCount, onOrderClick }: NavbarProps) => {
             whileHover={{ scale: 1.05, rotate: 5 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Coffee className="w-6 h-6 text-white" strokeWidth={2} />
+           <img 
+          src="/images/logo.png" 
+          alt="Yours Café Logo" 
+          className="w-6 h-6 object-contain"
+          />
           </motion.div>
           <div>
             <h1 className="font-serif text-xl font-bold gradient-text">
